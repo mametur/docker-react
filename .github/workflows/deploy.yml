@@ -13,3 +13,4 @@ jobs:
       - uses: actions/checkout@v3
       - run: docker login -u ${{  secrets.DOCKERHUB_USERNAME  }} -p ${{ secrets.DOCKERHUB_TOKEN}}
       - run: docker build . --tag mameazad/docker-react --file Dockerfile.dev
+      - run: docker run -e CI=true mameazad/docker-react npm run test -- --coverage
