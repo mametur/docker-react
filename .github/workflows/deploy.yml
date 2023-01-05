@@ -16,3 +16,9 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build Docker image for Development env
+      run: docker build . --tag mameazad/docker-react --file Dockerfile.dev
